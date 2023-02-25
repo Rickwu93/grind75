@@ -67,3 +67,23 @@ var isValid = function(s) {
     //checks return output for even number length otherwise would return false
     return output.length === 0
 };
+
+
+//other method:
+
+var isValid = function(s) {
+    //start with empty array to push indexes into
+    var array = [];
+    //splits each input up
+    s = s.split( "" );
+    //loop through and declaring the if statements for true values
+    for(let i = 0; i < s.length; i ++){
+        if( s[i] === "(" ) array.push( ")" );
+        else if( s[i] === "[" ) array.push( "]" );
+        else if( s[i] === "{" ) array.push( "}" );
+        //
+        else if( s.length === 0 || array[array.length - 1] !== s[i] ) return false;
+        else array.pop();
+    }
+    return array.length === 0;
+};
