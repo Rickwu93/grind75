@@ -70,3 +70,28 @@ Output: "acz"
   }
   return output
 };
+
+
+//another way, optimal 
+
+function freqAlphabets(s) {
+    let result = "";
+    let i = s.length - 1;
+    while (i >= 0) {
+        if (s[i] === '#') {
+            result = String.fromCharCode(parseInt(s.substring(i-2, i)) + 96) + result;
+            i -= 3;
+        } else {
+            result = String.fromCharCode(parseInt(s[i]) + 96) + result;
+            i -= 1;
+        }
+    }
+    return result;
+}
+
+// We initialize an empty string result to store the mapped characters.
+// We initialize the index i to the end of the string s.
+// We enter a while loop that runs as long as i is greater than or equal to 0.
+// Inside the while loop, we check if the current character s[i] is a '#'. If it is, we take the two preceding characters using substring(i-2, i), parse it as an integer using parseInt, add 96 to it (to get the ASCII code of the corresponding lowercase character), convert it to a character using String.fromCharCode, and add it to the beginning of the result string. We then decrement i by 3 to skip over the two preceding characters and the '#'.
+// If the current character is not a '#', we simply parse it as an integer using parseInt, add 96 to it, convert it to a character using String.fromCharCode, and add it to the beginning of the result string. We then decrement i by 1 to move on to the next character.
+// Finally, we return the result string.
